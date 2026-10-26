@@ -1,98 +1,73 @@
 # Colombia Spatial Intelligence
 
-Análisis **Spatial VAR** de la relación entre **conectividad digital** y **dinámica económica** en los departamentos de Colombia, usando luces nocturnas satelitales (VIIRS) como variable de actividad. Incluye un dashboard interactivo (Gradio y Streamlit).
+**Spatial VAR** · Conectividad digital ↔ dinámica económica · Luces nocturnas VIIRS
 
-> Origen: cuaderno de Colab `Taller 4.1.ipynb` (versión 1.1 – FINAL), exportado como `app.py`.
+Pipeline de análisis espacial para los departamentos de Colombia, con dashboard interactivo (Gradio y Streamlit). Originado en el cuaderno de Colab *Taller 4.1*.
 
----
+## ¿Qué hace?
 
-## Qué hace
-
-1. **Geometrías**: descarga el GeoJSON de departamentos de Colombia (MGN 2018) y normaliza los nombres.
-2. **PIB departamental**: descarga el anexo del DANE (`anex-PIBDep-TotalDep-2025pr.xlsx`, hoja `Cuadro 1`) y lo pasa a formato largo.
-3. **Internet fijo**: descarga accesos por departamento y año desde datos.gov.co (dataset `n48w-gutb`, MinTIC).
-4. **Luces nocturnas (NTL)**: extrae el promedio anual por departamento de `NOAA/VIIRS/DNB/ANNUAL_V21` con Google Earth Engine (2015–2024).
-5. **Panel**: une las tres fuentes por año y departamento (desde 2017, años comunes) y calcula `ln_pib`, `ln_internet` y `ln_ntl`.
+1. **Geometrías**: descarga el GeoJSON de departamentos (MGN 2018) y normaliza los nombres.
+2. **PIB departamental**: descarga el anexo del DANE (`anex-PIBDep-TotalDep-2025pr.xlsx`, hoja *Cuadro 1*) y lo pasa a formato largo.
+3. **Internet fijo**: descarga accesos por departamento desde datos.gov.co (MinTIC, dataset `n48w-gutb`).
+4. **Luces nocturnas (NTL)**: extrae el promedio anual por departamento de `NOAA/VIIRS/DNB/ANNUAL_V21` vía Google Earth Engine (2015–2024).
+5. **Panel**: une las tres fuentes (años ≥ 2017) y calcula logaritmos: `ln_pib`, `ln_internet`, `ln_ntl`.
 6. **Análisis espacial**:
-   - Matriz de pesos **Queen** (estandarizada por filas).
-   - **I de Moran** global para cada variable.
-   - Comparación de modelos por AIC: **OLS, SAR, SEM, SAC, SDM**, para dos ecuaciones (PIB e Internet).
-   - Descomposición de impactos **directo / indirecto / total** (LeSage & Pace).
-7. **Dashboard** con pestañas: Mapa, Topografía 3D, Moran, Series por departamento, Modelos, Impactos y Fuentes.
+   - Matriz de pesos **Queen** (fila estandarizada).
+   - **Moran global** de cada variable en el último año.
+   - Modelos para `ln_pib` y `ln_internet`: **OLS, SAR, SEM, SAC, SDM**.
+   - Selección del mejor modelo por **AIC**.
+   - Descomposición de impactos (directo, indirecto, total) estilo **LeSage & Pace**.
+7. **Dashboard** con 7 pestañas: Mapa, Topografía 3D, Moran, Series por departamento, Modelos, Impactos y Fuentes.
 
-## Variables
+### Especificación del modelo
 
-| Variable | Descripción | Fuente |
-|---|---|---|
-| `ln_pib` | Log del PIB departamental (millones) | DANE |
-| `ln_internet` | Log de accesos a internet fijo | MinTIC / datos.gov.co |
-| `ln_ntl` | Log de luces nocturnas promedio | NOAA VIIRS (Google Earth Engine) |
-
-Especificación base: `X = [ln_pib(t-1), ln_internet(t-1), ln_ntl(t)]`, estimada sobre el último año disponible del panel.
+- Variables explicativas (`X`): `ln_pib` rezagado (t-1), `ln_internet` rezagado (t-1) y `ln_ntl` (t).
+- Variables dependientes: `ln_pib` (t) y `ln_internet` (t).
 
 ## Requisitos
 
-- Python 3.10 o superior
-- Una cuenta de **Google Earth Engine** con un proyecto de Cloud habilitado
-- Conexión a internet (descarga de datos)
-
-Instalación:
+- Python 3.10+
+- Cuenta de Google Earth Engine con un proyecto de Google Cloud habilitado.
+- Dependencias: ver `requirements.txt`.
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## Cómo ejecutarlo
+## Uso
 
-### En Google Colab (recomendado)
+El script está pensado para **Google Colab**. Si lo ejecutas ahí, funciona tal cual. Si lo ejecutas en local, ajusta lo siguiente:
 
-El script fue escrito para Colab: usa la ruta `/content/cache_datos_reales` y `ee.Authenticate()` interactivo. Las líneas que empiezan con `!pip` solo funcionan en Colab o Jupyter.
-
-1. Sube el código a un cuaderno de Colab.
-2. Ejecuta las celdas en orden.
-3. Al final, `demo.launch(share=True)` genera un enlace público de Gradio.
-
-### En local
-
-Antes de ejecutar `app.py` fuera de Colab:
-
-1. Elimina o comenta las líneas `!pip install ...` (no son Python válido en un `.py`).
-2. Cambia `CACHE_DIR` por una ruta local, por ejemplo `Path("./cache_datos_reales")`.
-3. Autentica Earth Engine una vez con `earthengine authenticate`.
-4. Reemplaza el ID de proyecto en `ee.Initialize(project="...")` por el tuyo.
-5. Ejecuta:
-
-```bash
-python app.py
-```
-
-Para la versión Streamlit (segunda parte del archivo), sepárala en su propio script y ejecútala con:
-
-```bash
-streamlit run dashboard_streamlit.py
-```
-
-## Estructura del script
-
-| Sección | Contenido |
+| Elemento | Qué hacer |
 |---|---|
-| 0–1 | Instalación e imports, inicialización de GEE |
-| 2 | Utilidades (normalización de nombres, VIF, ADF, auditoría de W) |
-| 3–6 | Carga de geometrías, PIB, Internet y NTL |
-| 7 | Construcción del panel |
-| 8 | Matriz W, Moran, modelos espaciales e impactos |
-| 9–10 | Funciones y interfaz del dashboard (Gradio, luego Streamlit) |
+| Líneas `!pip install ...` | Quitarlas e instalar con `requirements.txt`. |
+| `from google.colab import files` y `files.download(...)` | Eliminarlas (solo existen en Colab). |
+| `CACHE_DIR = Path("/content/cache_datos_reales")` | Cambiar a una ruta local, por ejemplo `Path("cache_datos_reales")`. |
+| `ee.Initialize(project="...")` | Reemplazar por tu propio ID de proyecto de GEE. |
 
-## Observaciones sobre el código
+### Dashboard
 
-- El script contiene **dos dashboards** (Gradio y Streamlit) y repite la sección 9 y la instalación de dependencias. Conviene dividirlo en dos archivos.
-- `demo.launch(share=True)` bloquea la ejecución, por lo que el código de Streamlit que sigue no se ejecuta en la misma sesión.
-- El PIB, Internet y NTL dependen de URLs externas que pueden cambiar de formato o dejar de estar disponibles.
-- El análisis de corte transversal usa solo 2 años (`t` y `t-1`) con ~32 departamentos, así que los resultados deben interpretarse con cautela.
+El archivo contiene **dos interfaces** para los mismos datos:
+
+- **Gradio** (sección 10): se lanza con `demo.launch(share=True)` y genera un enlace público.
+- **Streamlit** (sección 10, segunda parte): se ejecuta con `streamlit run app.py`.
+
+> Nota: Streamlit debe ejecutarse con `streamlit run`; en un script que ya lanzó Gradio, conviene separar cada interfaz en su propio archivo.
 
 ## Fuentes de datos
 
-- **PIB**: https://www.dane.gov.co/files/operaciones/PIB/anex-PIBDep-TotalDep-2025pr.xlsx
-- **Internet fijo**: https://www.datos.gov.co/api/v3/views/n48w-gutb/query.csv
-- **Luces nocturnas**: `NOAA/VIIRS/DNB/ANNUAL_V21` (Google Earth Engine)
-- **Geometrías**: https://github.com/caticoa3/colombia_mapa
+- **PIB**: DANE, <https://www.dane.gov.co/files/operaciones/PIB/anex-PIBDep-TotalDep-2025pr.xlsx>
+- **Internet**: MinTIC / datos.gov.co, <https://www.datos.gov.co/api/v3/views/n48w-gutb/query.csv>
+- **NTL**: NOAA/VIIRS/DNB/ANNUAL_V21 (Google Earth Engine)
+- **Geometrías**: <https://raw.githubusercontent.com/caticoa3/colombia_mapa/master/co_2018_MGN_DPTO_POLITICO.geojson>
+
+## Salidas
+
+- `ntl_departamentos.csv`: luces nocturnas por departamento y año.
+- `internet_departamentos.csv`: accesos de internet por departamento y año.
+
+## Aspectos a tener en cuenta
+
+- Con ~32 departamentos y un solo corte transversal para los modelos, la muestra es pequeña; interpreta los resultados con cautela.
+- `tabulate` se importa pero no estaba en el `pip install` original; aquí se incluye en `requirements.txt`.
+- Las URL del DANE y datos.gov.co pueden cambiar con el tiempo.
