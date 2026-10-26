@@ -1,0 +1,32 @@
+# Colombia Spatial Intelligence - dependencias
+# Instalar con: pip install -r requirements.txt
+
+# Núcleo de datos
+numpy
+pandas
+scipy
+requests
+openpyxl
+xlrd
+tabulate
+
+# Geoespacial y econometría espacial
+geopandas
+libpysal
+esda
+spreg
+mapclassify
+statsmodels
+scikit-learn
+
+# Google Earth Engine
+earthengine-api
+
+# Visualización
+matplotlib
+seaborn
+plotly
+
+# Dashboards
+gradio
+streamlit
