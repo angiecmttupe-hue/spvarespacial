@@ -1,19 +1,17 @@
 numpy
 pandas
+pyarrow<25
 scipy
+requests
+openpyxl
+xlrd
 geopandas
 libpysal
 esda
 spreg
 mapclassify
 statsmodels
-scikit-learn
-openpyxl
-xlrd
-requests
-tabulate
-matplotlib
-seaborn
 plotly
 streamlit
+# Opcional: solo si NTL se consulta en vivo desde Earth Engine
 earthengine-api
