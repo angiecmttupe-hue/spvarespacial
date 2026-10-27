@@ -15,6 +15,5 @@ tabulate
 matplotlib
 seaborn
 plotly
-gradio
 streamlit
 earthengine-api

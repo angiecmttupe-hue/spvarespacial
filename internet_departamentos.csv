@@ -1,0 +1,235 @@
+año,departamento,accesos_internet
+2016,Boyacá,414
+2016,Huila,4
+2016,Santander,38
+2017,Amazonas,1257
+2017,Antioquia,3514222
+2017,Arauca,29470
+2017,"Archipiélago De San Andrés, Providencia Y Santa Catalina",12687
+2017,Atlántico,1169086
+2017,Bogotá D.C.,6275575
+2017,Bolívar,544562
+2017,Boyacá,348267
+2017,Caldas,391500
+2017,Caquetá,63858
+2017,Casanare,113559
+2017,Cauca,231796
+2017,Cesar,257861
+2017,Chocó,57856
+2017,Cundinamarca,1203478
+2017,Córdoba,266096
+2017,Guainía,493
+2017,Guaviare,4776
+2017,Huila,313831
+2017,La Guajira,110612
+2017,Magdalena,288410
+2017,Meta,371587
+2017,Nariño,314349
+2017,Norte de Santander,421768
+2017,Putumayo,34702
+2017,Quindío,293892
+2017,Risaralda,499902
+2017,Santander,1058959
+2017,Sucre,151975
+2017,Tolima,478496
+2017,Valle del Cauca,2423422
+2017,Vaupés,195
+2017,Vichada,4245
+2018,Amazonas,2528
+2018,Antioquia,4555193
+2018,Arauca,44900
+2018,"Archipiélago De San Andrés, Providencia Y Santa Catalina",16734
+2018,Atlántico,1363688
+2018,Bogotá D.C.,7435326
+2018,Bolívar,734497
+2018,Boyacá,451308
+2018,Caldas,487803
+2018,Caquetá,83606
+2018,Casanare,136733
+2018,Cauca,292078
+2018,Cesar,342692
+2018,Chocó,85826
+2018,Cundinamarca,1527302
+2018,Córdoba,375576
+2018,Guainía,2469
+2018,Guaviare,9067
+2018,Huila,406516
+2018,La Guajira,155864
+2018,Magdalena,363807
+2018,Meta,469083
+2018,Nariño,386971
+2018,Norte de Santander,557807
+2018,Putumayo,56504
+2018,Quindío,378317
+2018,Risaralda,663853
+2018,Santander,1297956
+2018,Sucre,207050
+2018,Tolima,612534
+2018,Valle del Cauca,2943022
+2018,Vaupés,253
+2018,Vichada,4376
+2019,Amazonas,5163
+2019,Antioquia,4831707
+2019,Arauca,57212
+2019,"Archipiélago De San Andrés, Providencia Y Santa Catalina",16583
+2019,Atlántico,1380083
+2019,Bogotá D.C.,7597590
+2019,Bolívar,769758
+2019,Boyacá,484846
+2019,Caldas,502287
+2019,Caquetá,98850
+2019,Casanare,146378
+2019,Cauca,307708
+2019,Cesar,394660
+2019,Chocó,95320
+2019,Cundinamarca,1654332
+2019,Córdoba,412561
+2019,Guainía,5643
+2019,Guaviare,10359
+2019,Huila,432018
+2019,La Guajira,176100
+2019,Magdalena,389558
+2019,Meta,505394
+2019,Nariño,402959
+2019,Norte de Santander,599299
+2019,Putumayo,56088
+2019,Quindío,401306
+2019,Risaralda,706344
+2019,Santander,1326838
+2019,Sucre,215167
+2019,Tolima,630565
+2019,Valle del Cauca,3094787
+2019,Vaupés,291
+2019,Vichada,5109
+2020,Amazonas,5616
+2020,Antioquia,5292740
+2020,Arauca,75968
+2020,"Archipiélago De San Andrés, Providencia Y Santa Catalina",13989
+2020,Atlántico,1518500
+2020,Bogotá D.C.,8140268
+2020,Bolívar,783814
+2020,Boyacá,520002
+2020,Caldas,563303
+2020,Caquetá,120756
+2020,Casanare,183210
+2020,Cauca,332395
+2020,Cesar,437245
+2020,Chocó,105672
+2020,Cundinamarca,1911284
+2020,Córdoba,440529
+2020,Guainía,6384
+2020,Guaviare,11006
+2020,Huila,483999
+2020,La Guajira,205018
+2020,Magdalena,415418
+2020,Meta,557172
+2020,Nariño,420376
+2020,Norte de Santander,694885
+2020,Putumayo,80367
+2020,Quindío,444874
+2020,Risaralda,794924
+2020,Santander,1418563
+2020,Sucre,229417
+2020,Tolima,668119
+2020,Valle del Cauca,3338241
+2020,Vaupés,279
+2020,Vichada,5656
+2021,Amazonas,5684
+2021,Antioquia,5878310
+2021,Arauca,95153
+2021,"Archipiélago De San Andrés, Providencia Y Santa Catalina",17993
+2021,Atlántico,1692169
+2021,Bogotá D.C.,8633348
+2021,Bolívar,892974
+2021,Boyacá,616331
+2021,Caldas,625311
+2021,Caquetá,139894
+2021,Casanare,206336
+2021,Cauca,394652
+2021,Cesar,493157
+2021,Chocó,110458
+2021,Cundinamarca,2210162
+2021,Córdoba,477296
+2021,Guainía,5138
+2021,Guaviare,9912
+2021,Huila,548285
+2021,La Guajira,227915
+2021,Magdalena,535630
+2021,Meta,589352
+2021,Nariño,470986
+2021,Norte de Santander,771056
+2021,Putumayo,69772
+2021,Quindío,498030
+2021,Risaralda,875828
+2021,Santander,1577024
+2021,Sucre,260543
+2021,Tolima,794078
+2021,Valle del Cauca,3545626
+2021,Vaupés,228
+2021,Vichada,5668
+2022,Amazonas,4599
+2022,Antioquia,6386834
+2022,Arauca,112622
+2022,"Archipiélago De San Andrés, Providencia Y Santa Catalina",21849
+2022,Atlántico,1818275
+2022,Bogotá D.C.,9021082
+2022,Bolívar,1034147
+2022,Boyacá,632086
+2022,Caldas,684312
+2022,Caquetá,137677
+2022,Casanare,202718
+2022,Cauca,380889
+2022,Cesar,529303
+2022,Chocó,109013
+2022,Cundinamarca,2398396
+2022,Córdoba,518848
+2022,Guainía,3421
+2022,Guaviare,7359
+2022,Huila,578280
+2022,La Guajira,210352
+2022,Magdalena,623077
+2022,Meta,627642
+2022,Nariño,493018
+2022,Norte de Santander,761292
+2022,Putumayo,43069
+2022,Quindío,514329
+2022,Risaralda,858006
+2022,Santander,1691784
+2022,Sucre,284198
+2022,Tolima,830176
+2022,Valle del Cauca,3669617
+2022,Vaupés,344
+2022,Vichada,4268
+2023,Amazonas,4514
+2023,Antioquia,4883008
+2023,Arauca,79733
+2023,"Archipiélago De San Andrés, Providencia Y Santa Catalina",32369
+2023,Atlántico,1424867
+2023,Bogotá D.C.,6854176
+2023,Bolívar,792118
+2023,Boyacá,484378
+2023,Caldas,517687
+2023,Caquetá,102715
+2023,Casanare,167895
+2023,Cauca,304630
+2023,Cesar,405851
+2023,Chocó,66013
+2023,Cundinamarca,1945399
+2023,Córdoba,366737
+2023,Guainía,2147
+2023,Guaviare,4491
+2023,Huila,442919
+2023,La Guajira,153096
+2023,Magdalena,445258
+2023,Meta,509444
+2023,Nariño,391711
+2023,Norte de Santander,558556
+2023,Putumayo,47475
+2023,Quindío,386422
+2023,Risaralda,660843
+2023,Santander,1297163
+2023,Sucre,208992
+2023,Tolima,683579
+2023,Valle del Cauca,2768397
+2023,Vaupés,295
+2023,Vichada,3062
