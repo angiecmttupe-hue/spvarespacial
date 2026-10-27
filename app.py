@@ -323,12 +323,16 @@ def escala(variable):
 
 def crear_mapa(D, variable):
     g = D["gdf_plot"]
-    fig = px.choropleth_mapbox(
-        g, geojson=g.__geo_interface__, locations=g.index, color=variable,
-        hover_name="departamento", mapbox_style="carto-darkmatter",
+    kwargs = dict(
+        geojson=g.__geo_interface__, locations=g.index, color=variable,
+        hover_name="departamento",
         center={"lat": 4.5, "lon": -74}, zoom=4.3, opacity=0.78,
         color_continuous_scale=escala(variable), title=f"{variable} · {D['año_t']}",
     )
+    if hasattr(px, "choropleth_map"):  # Plotly >= 5.24 (MapLibre)
+        fig = px.choropleth_map(g, map_style="carto-darkmatter", **kwargs)
+    else:  # Plotly antiguo
+        fig = px.choropleth_mapbox(g, mapbox_style="carto-darkmatter", **kwargs)
     fig.update_layout(template="plotly_dark", height=520, margin=dict(l=0, r=0, t=40, b=0))
     return fig
 
